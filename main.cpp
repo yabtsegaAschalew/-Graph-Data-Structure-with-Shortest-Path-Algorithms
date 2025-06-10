@@ -127,7 +127,16 @@ class Graph
       }
     }
 
-    void printGraph() const;
+    void printGraph() const{
+      cout<<" Graph Adjacency List: "<< endl;
+      for(int i = 0; i < numVertices; ++i){
+        cout << "Vertex " << i << ":";
+        for(const auto& edge : adj[i]){
+          cout<< " -> (" << endge.to << ", w:" << edge.weight << ")";
+        }
+        cout<< endl;
+      }
+    }
 };
 
 int main(){
