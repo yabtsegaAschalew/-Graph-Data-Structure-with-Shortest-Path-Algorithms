@@ -1,6 +1,10 @@
 #include<iostream>
 #include<vector>
-#include<list>
+#include<list> // For adjacency list
+#include<queue> // For priority queue
+#include<limits> // For numeric limits
+#include<algorithm> // For reverse
+
 using namespace std;
 
 // Define infinity as a large enough value
