@@ -60,7 +60,8 @@ class Graph
       dist[src] = 0;
       pq.push({0, src}); // {distance, vertex}
 
-      while (!pq.empty()){
+      while (!pq.empty())
+      {
         int u = pq.top().second; // Vertex with the smallest distance
         int d_u = pq.top().first; // Distance to u
         pq.pop();
@@ -68,15 +69,57 @@ class Graph
         // If we found a shorter path already, skip
         // This happens id a vertex is pushed multiple times into PQ with different distances 
 
-        if(d_u > dist[u]){
+        if(d_u > dist[u])
+        {
           continue;
         }
 
         // If we reached the destination, we can potentially stop early
         // For finding all shortest paths from src, remove this check.
-        if(u == dest && dist[u] != INF ){
+        if(u == dest && dist[u] != INF )
+        {
           // break; // Optimization: stop if destination is reached
         }
+
+        // Iterate over all adjacent vertices of u
+        for (const auto& edge : adj[u]) 
+          {
+            int v = edge. to;
+            int weight_uv = edge. weight;
+
+            // If there is a shorter path to v through u
+            if (dist[u] != INF && dist[u] + weight_uv < dist[v]) 
+            {
+              dist[v] = dist[u] + weight_uv;
+              parent[v] = u;
+              pq.push({dist[v], v});
+            }
+          }
+      }
+
+      // Print the shortest path and distance
+      cout << "Shortest path from vertex " << " to vertex " << dest << ":" << endl;
+      if (dist[dest] == INF) 
+      {
+        cout << "No path exists." << endl;
+      }
+      else
+      {
+        cout << "Distance: " << dist[dest] << endl;
+        cout << "Path: ";
+        vector<int> path;
+        int current = dest;
+        while (current != -1)
+          {
+            path.push_back(current);
+            current = parent[current];
+          }
+        reverse(path.begin(), path.end());
+        for (size_t i = 0; i < path.size(); ++i)
+          {
+            cout << path[i] << (i == path. size() - 1? " " : " -> ");
+          }
+        cout << endl;
       }
     }
 
