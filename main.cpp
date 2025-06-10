@@ -25,7 +25,7 @@ class Graph
     // Adjacency list: vector of lists, where each list contains pairs of (destination_vertex, weight)
     vector<list<Edge>> adj;
 
-    Graph(int V) : numVertices(V), adj(V);
+    Graph(int V) : numVertices(V), adj(V) {}
 
     // Add an edge to a directed graph
     void addEdge(int u, int v, int weight)
@@ -134,3 +134,4 @@ int main(){
 
   return 0;
 }
+
