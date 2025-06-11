@@ -11,6 +11,12 @@ Discussion on Data Structures for Graph Representation
 - Best for: Dense graphs where E is close to V^2, or when O(1) edge check is critical 
 
 2. Adjacency List (Used in this implementation) 
+- Representation: Array of lists. adj[u] stores a list of pairs (neighbor, weight).
+- Space: O(V + E). Efficient for sparce and moderately dense graphs.
+- Edge Check (u, v): O(degree(u)).
+- Iterate neighbors of u: O(degree(u)).
+- Impact on Dijkstra's: O(E log V) or O((V + E) log V) with a binary heap (priority_queue). This is generally very efficient.
+- Best for: Most general cases, especially sparse graphs.
 
 3. Edge List 
 - Representation: A list of (u, v, weight) tuples 
