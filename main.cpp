@@ -132,7 +132,7 @@ class Graph
       for(int i = 0; i < numVertices; ++i){
         cout << "Vertex " << i << ":";
         for(const auto& edge : adj[i]){
-          cout<< " -> (" << endge.to << ", w:" << edge.weight << ")";
+          cout<< " -> (" << edge.to << ", w:" << edge.weight << ")";
         }
         cout<< endl;
       }
@@ -158,6 +158,27 @@ int main()
   cout << "-------------------- Graph Details --------------------"<<endl;
   g.printGraph();
   cout << "-------------------------------------------------------"<<endl;
+  cout << "-------------------- Shortest Path (Djkstra) --------------------"<<endl;
+  int source_vertex = 0;
+  int destination_vertex = 5;
+  g.dijkstraShortestPath(source_vertex, destination_vertex);
+  cout << "---------------------------------------"<<endl;
+
+  destination_vertex = 4;
+  g.dijkstraShortestPath(source_vertex, destination_vertex);
+  cout << "---------------------------------------"<<endl;
+
+  // Test case: No path
+  Graph g_no_path(3);
+  g_no_path.addEdge(0,1,10);
+  cout<<"-------------------- Shortest Path (No Path Example) --------------------"<<endl;
+  g_no_path.dijkstraShortestPath(0,2);
+  cout << "---------------------------------------"<<endl<<endl;
+
+  // Test case: Source is destination
+  cout <<  "-------------------- Shortest Path (Djkstra) --------------------"<<endl;
+  g.dijkstraShortestPath(0,0);
+  cout << "---------------------------------------"<<endl<<endl;
   
   return 0;
 }
