@@ -7,8 +7,16 @@ Discussion on Data Structures for Graph Representation
 - Edge Check (u, v): O(1)
 - Iterate neighbors of u: O(V)
 - Impact on Dijkstra's: Typically O(V^2) if implemented by scanning a distance array 
-If used with a priority queue, iterating neighbors is still O(V), making it less optimal.
+  If used with a priority queue, iterating neighbors is still O(V), making it less optimal.
 - Best for: Dense graphs where E is close to V^2, or when O(1) edge check is critical 
 
-2. Adjacency List (Used in this implementation)
-3. Edge List
+2. Adjacency List (Used in this implementation) 
+
+3. Edge List 
+- Representation: A list of (u, v, weight) tuples 
+- Space: O(E)
+- Edge Check (u, v): O(E)
+- Iterate Neighbors of u: O(E)
+- Impact on Dijkstra's: Not suitable due to inefficient neighbor lookup
+   Better for algorithms like Bellman-Ford or Kruskal's
+- Best for: Algorithms processing all edges without specific vertex lookups
